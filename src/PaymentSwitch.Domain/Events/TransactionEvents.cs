@@ -1,0 +1,4 @@
+namespace PaymentSwitch.Domain.Events;
+public record TransactionCreatedEvent(Guid TransactionId, decimal Amount, string SenderBank, string ReceiverBank) : IDomainEvent { public Guid EventId { get; } = Guid.NewGuid(); public DateTime OccurredAt { get; } = DateTime.UtcNow; }
+public record TransactionCompletedEvent(Guid TransactionId, decimal Amount, string SenderBank, string ReceiverBank) : IDomainEvent { public Guid EventId { get; } = Guid.NewGuid(); public DateTime OccurredAt { get; } = DateTime.UtcNow; }
+public record TransactionFailedEvent(Guid TransactionId, string Reason) : IDomainEvent { public Guid EventId { get; } = Guid.NewGuid(); public DateTime OccurredAt { get; } = DateTime.UtcNow; }

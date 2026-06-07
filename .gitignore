@@ -1,0 +1,15 @@
+# Build
+bin/
+obj/
+*.user
+*.suo
+.vs/
+.vscode/
+
+# Environment
+appsettings.Production.json
+*.pfx
+
+# OS
+.DS_Store
+Thumbs.db

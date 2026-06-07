@@ -1,0 +1,25 @@
+using PaymentSwitch.API.Middleware;
+using PaymentSwitch.Application.Commands;
+using PaymentSwitch.Application.Interfaces;
+using PaymentSwitch.Domain.Interfaces;
+using PaymentSwitch.Infrastructure.Messaging;
+using PaymentSwitch.Infrastructure.Repositories;
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c => {
+    c.SwaggerDoc("v1", new() { Title = "Payment Switch API", Version = "v1", Description = "Interbank Payment Switch — Clean Architecture demo by Yasir Mehmood" });
+    c.EnableAnnotations();
+});
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateTransactionCommand).Assembly));
+builder.Services.AddSingleton<ITransactionRepository, InMemoryTransactionRepository>();
+builder.Services.AddSingleton<IMessagePublisher, InMemoryMessagePublisher>();
+builder.Services.AddCors(o => o.AddPolicy("AllowAll", p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+var app = builder.Build();
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Payment Switch API v1"));
+app.UseMiddleware<ExceptionMiddleware>();
+app.UseCors("AllowAll");
+app.MapControllers();
+app.MapGet("/", () => Results.Redirect("/swagger"));
+app.Run();
