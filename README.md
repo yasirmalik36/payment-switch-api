@@ -1,6 +1,6 @@
 # 🏦 Payment Switch API
 
-> **Interbank payment routing system** built with **.NET 8**, **Clean Architecture**, **CQRS + MediatR**, and **event-driven messaging**. Simulates a real-world payment switch processing transactions between banks with idempotency, circuit breaking, and full audit trails.
+> **Interbank payment routing system** built with **.NET 8**, **Clean Architecture**, **CQRS + MediatR**, and **event-driven messaging**. Simulates a real-world payment switch processing transactions between banks with idempotency keys, a domain-enforced state machine and domain events.
 >
 > *Inspired by production experience building Pakistan's 1LINK interbank switch, processing 1M+ daily transactions at 99.9% uptime.*
 
@@ -8,7 +8,7 @@
 [![C#](https://img.shields.io/badge/C%23_12-239120?style=for-the-badge&logo=c-sharp&logoColor=white)](https://docs.microsoft.com/dotnet/csharp)
 [![Architecture](https://img.shields.io/badge/Clean_Architecture-1B3A6B?style=for-the-badge)](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 [![CQRS](https://img.shields.io/badge/CQRS_+_MediatR-FF6B35?style=for-the-badge)](https://github.com/jbogard/MediatR)
-[![Tests](https://img.shields.io/badge/xUnit_Tests-green?style=for-the-badge)](tests/)
+[![CI](https://github.com/yasirmalik36/payment-switch-api/actions/workflows/ci.yml/badge.svg)](https://github.com/yasirmalik36/payment-switch-api/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
 ---

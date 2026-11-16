@@ -2,9 +2,15 @@ name: CI
 
 on:
   push:
-    branches: [main, develop]
   pull_request:
     branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-and-test:
@@ -14,10 +20,12 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: "8.0.x"
       - name: Restore
         run: dotnet restore PaymentSwitch.sln
       - name: Build
         run: dotnet build PaymentSwitch.sln --no-restore -c Release
       - name: Test
         run: dotnet test PaymentSwitch.sln --no-build -c Release --verbosity normal
+      - name: Docker build
+        run: docker build -t payment-switch-api:ci .
