@@ -1,3 +1,4 @@
+using PaymentSwitch.Application.Interfaces;
 using MediatR;
 using PaymentSwitch.Application.DTOs;
 using PaymentSwitch.Domain.Entities;
