@@ -13,6 +13,12 @@
 
 ---
 
+## 📸 Screenshot
+
+The interactive API docs (Swagger), captured from the running app by the [Refresh screenshots](.github/workflows/screenshots.yml) workflow:
+
+![Payment Switch API Swagger UI](docs/screenshots/swagger.png)
+
 ## ✨ Features
 
 | Feature | Details |
